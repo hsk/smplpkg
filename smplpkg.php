@@ -1,6 +1,17 @@
 <?php
 
 class smplpkg {
+  function install($argv) {
+    $repo = $this->repo;
+    if(!file_exists($argv))
+      system("git clone $repo $argv");
+    else
+      system("cd test2; git pull $repo");
+    echo "installed $argv\n";
+  }
+}
+
+class smplpkg_manager {
   public $depends = array();
   function gen() {
     system("cp smplpkg/template/Makefile .");
@@ -22,7 +33,7 @@ class smplpkg {
   }
 }
 
-$manager = new smplpkg();
+$manager = new smplpkg_manager();
 array_shift($argv);
 $cmd = array_shift($argv);
 
