@@ -9,9 +9,10 @@ class smplpkg {
       if(!file_exists($zip)) {
         system("wget -O $zip ".$this->zip);
       }
-      system("unzip $zip");
       exec("zipinfo -1 $zip", $e);
       $e = $e[0];
+      echo "************* $e\n";
+      system("unzip $zip");
       system("mv $e $name");
       return true;
     }
