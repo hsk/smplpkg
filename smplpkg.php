@@ -1,13 +1,13 @@
 <?php
 
 class smplpkg {
-  function install($argv) {
+  function install($name) {
     $repo = $this->repo;
-    if(!file_exists($argv))
-      system("git clone $repo $argv");
+    if(!file_exists($name))
+      system("git clone $repo $name");
     else
-      system("cd test2; git pull $repo");
-    echo "installed $argv\n";
+      system("cd $name; git pull $repo");
+    echo "installed $name\n";
   }
 }
 
