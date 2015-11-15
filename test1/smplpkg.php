@@ -5,6 +5,6 @@ class test1_smplpkg extends smplpkg {
     function install($argv) {
       system("git clone git@github.com:hsk/smplpkg_test1.git test1");
       system("cd test1; git pull git@github.com:hsk/smplpkg_test1.git");
-      echo "install test1\n";
+      echo "installed test1\n";
     }
 }

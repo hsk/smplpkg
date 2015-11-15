@@ -4,7 +4,7 @@
 PHPのみでパッケージを管理します。
 
     git clone git@github.com:hsk/smplpkg
-    php smplpkg/smplpkg.php
+    php smplpkg/smplpkg.php gen
     make
     make run
 
