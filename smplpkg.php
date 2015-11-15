@@ -24,8 +24,8 @@ class smplpkg_manager {
       echo "start install ".$name."\n";
       include_once "$name.php";
       $pkg = new $name();
-      foreach($pkg->depends as $name) {
-        $this->install($name);
+      foreach($pkg->depends as $depend) {
+        $this->install($depend);
       }
       $pkg->install($name);
     return true;
