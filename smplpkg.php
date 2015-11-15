@@ -2,6 +2,15 @@
 
 class smplpkg {
   function install($name) {
+    if(isset($this->zip)) {
+      system("wget -O smplpkg/$name.zip ".$this->zip);
+      system("unzip smplpkg/$name.zip");
+      exec("zipinfo -1 smplpkg/$name.zip", $e);
+      $e = $e[0];
+      echo "***************** $e\n";
+      system("mv $e $name");
+      return true;
+    }
     $repo = $this->repo;
     if(!file_exists($name))
       system("git clone $repo $name");
