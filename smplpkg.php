@@ -31,10 +31,23 @@ class smplpkg_manager {
   function clean() {
     system("rm -rf caches/*");
   }
+
+  function list_() {
+    foreach(glob("smplpkg/*", GLOB_ONLYDIR) as $dir) {
+      $dir = preg_replace("/^smplpkg\\//","", $dir);
+      if(preg_match("/^(template)\$/",$dir)>0) continue;
+
+      include_once "$dir/smplpkg.php";
+      echo "# $dir\n\n";
+      $pkgname = $dir."_smplpkg";
+      $pkg = new $pkgname();
+      echo $pkg->comment."\n\n";
+    }
+  }
 }
 
 $manager = new smplpkg_manager();
 array_shift($argv);
 $cmd = array_shift($argv);
-
+$cmd = preg_replace("/^list\$/", "list_", $cmd);
 call_user_func_array(array($manager, $cmd), $argv);
