@@ -3,11 +3,15 @@
 class smplpkg {
   function install($name) {
     if(isset($this->zip)) {
-      system("wget -O smplpkg/$name.zip ".$this->zip);
-      system("unzip smplpkg/$name.zip");
-      exec("zipinfo -1 smplpkg/$name.zip", $e);
+      if(file_exists($name)) return true;
+      $zip = explode("/", $this->zip);
+      $zip = "smplpkg/".array_pop($zip);
+      if(!file_exists($zip)) {
+        system("wget -O $zip ".$this->zip);
+      }
+      system("unzip $zip");
+      exec("zipinfo -1 $zip", $e);
       $e = $e[0];
-      echo "***************** $e\n";
       system("mv $e $name");
       return true;
     }
