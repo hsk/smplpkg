@@ -44,6 +44,13 @@ class smplpkg_manager {
       echo $pkg->comment."\n\n";
     }
   }
+
+  function usage() {
+    echo "usage\n";
+    echo "  install name : install package\n";
+    echo "  list         : show package list\n";
+    echo "  clean        : remove caches\n";
+  }
 }
 
 $manager = new smplpkg_manager();
