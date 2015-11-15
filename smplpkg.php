@@ -20,15 +20,14 @@ class smplpkg_manager {
     return true;
   }
 
-  function install($argv) {
-      echo "start install ".$argv."\n";
-      include_once "$argv/smplpkg.php";
-      $pkgname = $argv."_smplpkg";
-      $pkg = new $pkgname();
+  function install($name) {
+      echo "start install ".$name."\n";
+      include_once "$name.php";
+      $pkg = new $name();
       foreach($pkg->depends as $name) {
         $this->install($name);
       }
-      $pkg->install($argv);
+      $pkg->install($name);
     return true;
   }
 
@@ -38,14 +37,12 @@ class smplpkg_manager {
   }
 
   function list_() {
-    foreach(glob("smplpkg/*", GLOB_ONLYDIR) as $dir) {
-      $dir = preg_replace("/^smplpkg\\//","", $dir);
-      if(preg_match("/^(template)\$/",$dir)>0) continue;
-
-      include_once "$dir/smplpkg.php";
-      echo "# $dir\n\n";
-      $pkgname = $dir."_smplpkg";
-      $pkg = new $pkgname();
+    foreach(glob("smplpkg/*.php") as $path) {
+      if(preg_match("/^(smplpkg.php)\$/",$path)>0) continue;
+      $name = preg_replace("/^smplpkg/(.*).php\$/","\$1", $path);
+      include_once "$name.php";
+      echo "# $name\n\n";
+      $pkg = new $name();
       echo $pkg->comment."\n\n";
     }
     return true;
