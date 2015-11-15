@@ -16,7 +16,7 @@ test2:
 cleanall:
 	rm -rf test1 test2 smplpkg smplpkg*.zip*
 clean:
-	rm -rf test1 test2
+	rm -rf test1 test2 smplpkg*.zip*
 
 zip:
 	make cleanall
