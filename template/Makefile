@@ -1,12 +1,12 @@
 run: test2
 	php test.php
 install: smplpkg
-	cd smplpkg; git pull
 	php smplpkg/smplpkg.php install test2
 smplpkg:
 	wget https://github.com/hsk/smplpkg/releases/download/smplpkg-0.0.3/smplpkg.zip
 	unzip smplpkg.zip
-
+update:
+	cd smplpkg; git pull
 list:
 	php smplpkg/smplpkg.php list
 usage:
