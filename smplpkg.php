@@ -3,8 +3,8 @@
 class smplpkg {
   public $depends = array();
   function gen() {
-    system("cp smplpkg/Makefile .");
-    system("cp smplpkg/test.php .");
+    system("cp smplpkg/template/Makefile .");
+    system("cp smplpkg/template/test.php .");
   }
   function install($argv) {
       echo "start install ".$argv."\n";
