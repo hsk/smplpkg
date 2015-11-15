@@ -10,5 +10,7 @@ usage:
 	php smplpkg/smplpkg.php usage
 test2:
 	make install
-clean:
+cleanall:
 	rm -rf test1 test2 smplpkg
+clean:
+	rm -rf test1 test2
