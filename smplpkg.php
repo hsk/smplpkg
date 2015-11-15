@@ -38,8 +38,8 @@ class smplpkg_manager {
 
   function list_() {
     foreach(glob("smplpkg/*.php") as $path) {
-      if(preg_match("/^(smplpkg.php)\$/",$path)>0) continue;
-      $name = preg_replace("/^smplpkg/(.*).php\$/","\$1", $path);
+      $name = preg_replace("/^smplpkg\/(.*).php\$/","\$1", $path);
+      if(preg_match("/^smplpkg\$/",$name)>0) continue;
       include_once "$name.php";
       echo "# $name\n\n";
       $pkg = new $name();
