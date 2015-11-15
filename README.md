@@ -6,6 +6,5 @@ PHPのみでパッケージを管理します。
     git clone git@github.com:hsk/smplpkg
     php smplpkg/smplpkg.php gen
     make
-    make run
 
 で、パッケージを導入して実行出来ます。
