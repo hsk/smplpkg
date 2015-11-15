@@ -13,10 +13,13 @@ class smplpkg {
 
 class smplpkg_manager {
   public $depends = array();
+
   function gen() {
     system("cp smplpkg/template/Makefile .");
     system("cp smplpkg/template/test.php .");
+    return true;
   }
+
   function install($argv) {
       echo "start install ".$argv."\n";
       include_once "$argv/smplpkg.php";
@@ -26,10 +29,12 @@ class smplpkg_manager {
         $this->install($name);
       }
       $pkg->install($argv);
+    return true;
   }
 
   function clean() {
     system("rm -rf caches/*");
+    return true;
   }
 
   function list_() {
@@ -43,6 +48,7 @@ class smplpkg_manager {
       $pkg = new $pkgname();
       echo $pkg->comment."\n\n";
     }
+    return true;
   }
 
   function usage() {
@@ -50,6 +56,7 @@ class smplpkg_manager {
     echo "  install name : install package\n";
     echo "  list         : show package list\n";
     echo "  clean        : remove caches\n";
+    return true;
   }
 }
 
@@ -58,4 +65,6 @@ array_shift($argv);
 $cmd = array_shift($argv);
 $cmd = preg_replace("/^list\$/", "list_", $cmd);
 $cmd = preg_replace("/^_.*\$/", "usage", $cmd);
-call_user_func_array(array($manager, $cmd), $argv);
+if(!@call_user_func_array(array($manager, $cmd), $argv)){
+  call_user_func_array(array($manager, "usage"), $argv);
+}
