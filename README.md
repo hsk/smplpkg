@@ -1,9 +1,11 @@
-# smppkg ver0.0.1
+# smppkg ver0.0.2
 
 これは、とても簡単なパッケージシステムです。
 PHPのみでパッケージを管理します。
 
-    git clone http://github.com/hsk/smplpkg
-    php smplpkg/smplpkg.php install test2
+    git clone git@github.com:hsk/smplpkg
+    php smplpkg/smplpkg.php
+    make
+    make run
 
-で、パッケージを導入してみる事が出来ます。
+で、パッケージを導入して実行出来ます。
