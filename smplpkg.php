@@ -57,4 +57,5 @@ $manager = new smplpkg_manager();
 array_shift($argv);
 $cmd = array_shift($argv);
 $cmd = preg_replace("/^list\$/", "list_", $cmd);
+$cmd = preg_replace("/^_.*\$/", "usage", $cmd);
 call_user_func_array(array($manager, $cmd), $argv);
