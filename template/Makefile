@@ -1,3 +1,5 @@
+run: test2
+	php test.php
 install: smplpkg
 	php smplpkg/smplpkg.php install test2
 smplpkg:
@@ -6,7 +8,7 @@ list:
 	php smplpkg/smplpkg.php list
 usage:
 	php smplpkg/smplpkg.php usage
+test2:
+	make install
 clean:
 	rm -rf test1 test2 smplpkg
-run:
-	php test.php
