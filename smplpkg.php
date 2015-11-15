@@ -2,6 +2,10 @@
 
 class smplpkg {
   public $depends = array();
+  function gen() {
+    system("cp Makefile ../Makefile");
+    system("cp test.php ../test.php");
+  }
   function install($argv) {
       echo "start install ".$argv."\n";
       include_once "$argv/smplpkg.php";
