@@ -14,7 +14,7 @@ class smplpkg {
 class smplpkg_manager {
   public $depends = array();
 
-  function gen() {
+  function init() {
     system("cp smplpkg/template/Makefile .");
     system("cp smplpkg/template/test.php .");
     return true;
